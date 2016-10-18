@@ -21,7 +21,7 @@
 		private static $_debug = true;
 		
 		/**
-		* Initialization method. Create instance of DB.
+		* Initialization method. Create instance of PDO.
 		*
 		* @param string $drvr		DB driver.
 		* @param string $host		DB server.
