@@ -418,6 +418,8 @@
 		/**
 		* Delete entries from database by list of IDs.
 		*
+		* @param array $list		List of IDs.
+		*
 		* @return true.
 		*/
 		static function deleteList($list = array()) {
