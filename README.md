@@ -1,6 +1,6 @@
 # db_dbo
 
-Package contain 2 classes: 
+Package contains 2 classes: 
 
 - DBO is database tabels manager.
 - DB is static wrapper for PDO (allow to use it in every contnent of your application). Required for DBO.
@@ -25,6 +25,15 @@ PHP Tested: 5.6.19, 7.0.11
 	    2.3.8. static getList()
 	    2.3.9. static deleteList()
 	3. DB
+	  3.1. DB PUBLIC METHODS
+	    3.1.1. init()
+	    3.1.2. query()
+	    3.1.3. prepare()
+	    3.1.4. execute()
+	    3.1.5. fetch()
+	    3.1.6. id()
+	    3.1.7. rows()
+	    3.1.8. escape()
 
 * * *
 
@@ -278,3 +287,107 @@ In result you'll get an array with keys:
 Removes DB entries according to $list of IDs.
 
 * * *
+
+## 3. DB
+
+DB class is simple wrapper of PDO class.
+
+It's static, so you have access to it from every context of your application.
+
+### 3.1. DB PUBLIC METHODS
+
+DB provide all basic PDO routine:
+
+#### 3.1.1. init($drvr, $host, $name, $user, $pass)
+
+Initialization method. Create instance of PDO.
+
+Params:
+
+- $drvr string - DB driver.
+
+- $host string - DB server.
+
+- $name string - DB name.
+
+- $user string - DB user.
+
+- $pass string - DB user password.
+
+#### 3.1.2. query($query)
+
+Executes an SQL statement.
+
+Params:
+
+- $query string - SQL request.
+
+Returns:
+
+- resource - result set as a PDOStatement object.
+
+#### 3.1.3. prepare($query)
+
+Prepares an SQL statement to be executed by the DB::execute() method.
+
+Params:
+
+- $query string - SQL request.
+
+Returns:
+
+- resource - result set as a PDOStatement object.
+
+#### 3.1.4. execute($res, $placeholders = array())
+
+Prepares an SQL statement to be executed by the DB::execute() method.
+
+Params:
+
+- $res resource - PDOStatement object.
+
+- $placeholders array - Array of placeholders (placeholder => value).
+
+Returns:
+
+- boolean - true on success or false on failure.
+
+#### 3.1.5. fetch($res)
+
+Fetches the next row from a result set
+
+Params:
+
+- $res resource - PDOStatement object.
+
+Returns:
+
+- array|false - DB record as associated array.
+
+#### 3.1.6. id()
+
+Returns the ID of the last inserted row or sequence value
+
+Returns:
+
+- array|false - ID of the last inserted row or sequence value.
+
+#### 3.1.7. rows($res)
+
+Returns the number of rows affected by the last SQL statement.
+
+Returns:
+
+- int - number of rows.
+
+#### 3.1.8. escape($string)
+
+Quotes a string for use in a query.
+
+Params:
+
+- $string string - The string to be quoted.
+
+Returns:
+
+- string - quoted string that is theoretically safe to pass into an SQL statement.
