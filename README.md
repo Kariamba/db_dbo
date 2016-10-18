@@ -148,7 +148,9 @@ There are several steps to create the table definition in your DBO child:
     Class provide several default types: numeric (numeric database fields), text, html, mail, password (all other database fields). You can define your own types such as 'date' for date or datetime fields (see section 2.2).
 		
 4.  Define class constructor and redefine other parent methods (if required).
+
     For example, you can skip parent construcor if you have data in cache. Or update you cache after calling parent save() or delete() methods.
+		
 5.  Define you own methods.
 
 ### 2.2. FIELDS TYPES DEFINITION
@@ -156,10 +158,15 @@ There are several steps to create the table definition in your DBO child:
 Actualy you can use any type you want. But several DBO parent methods use type for several purposes:
 
 1.  Preparetion fields before SQL insert or update statment.
+
     DBO::prepare() has check all fields and try to convert them to proper format or set empty (zero, null) data.
+		
     So, it's to modify this method for your field types
+		
 2.  Fields validation rules.
+
     DBO::validate() has check all fields according rules for field type.
+		
     So, if you want some validation rules for your field types modify validate() method.
 
 ### 2.3. DBO PUBLIC METHODS
@@ -203,6 +210,7 @@ Validate current object fields.
 Returns array with keys:
 
 - result boolean - result of validation
+
 - errors array - list of errors for each fields (if validation fails)
 
 #### 2.3.7. unique($field, $value)
@@ -248,14 +256,22 @@ You can mix these params.
 
 In result you'll get an array with keys:
 
-- list - list of selected items
-- filter - list of accepted filters (if provided in params)
-- sort - list of accepted sorting params (if provided in params)
-- pager - array with data fo pager (if provided in params):
+-   list - list of selected items
+
+-   filter - list of accepted filters (if provided in params)
+
+-   sort - list of accepted sorting params (if provided in params)
+
+-   pager - array with data fo pager (if provided in params):
+
     page - current list page
+		
 		onpage - number of items in page
+		
 		pages - total list pages
+		
 		record - total items number
+		
 		
 ####  2.3.9. static deleteList($list = array())
 	
